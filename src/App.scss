@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo+2&display=swap');
+
+body, html {
+    background-color: #20222d;
+}
+
+.App > div {
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+}
+
+.highcharts-root  {
+    font-family: 'Baloo 2', cursive !important;
+    fill: #f3f3f3;
+
+    .highcharts-background {
+        fill: #20222d !important;
+    }
+
+    .highcharts-axis-line,
+    .highcharts-grid-line[stroke="#e6e6e6"] {
+        stroke: #734463 !important
+    }
+
+    .highcharts-legend-item-hidden path {
+        fill: #642a43 !important;
+        stroke: #623d3e !important;
+    }
+
+    .highcharts-credits {
+        display: none;
+    }
+
+    .highcharts-title {
+        fill: #e3e3e3 !important;
+        font-size: 2rem !important;
+    }
+
+    .highcharts-legend-item text,
+    .highcharts-axis text,
+    .highcharts-axis-labels text {
+        font-size: 14px !important;
+        fill: #e1e7ea !important;
+        font-weight: normal !important;
+    }
+
+    .highcharts-axis-labels text:nth-child(even) {
+        fill: #7f8092 !important;
+    }
+}
+
+.countries {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .country {
+        width: 12rem;
+        margin: .5rem;
+        border: 3px solid transparent;
+        background-color: #01101a;
+        border-radius: .4rem;
+        transition: border-color .17s, color .17s;
+        color: #a3a3a3;
+        display: flex;
+
+        img {
+            width: 8rem;
+            height: 5rem;
+            border-radius: .2rem;
+            margin: 4px;
+            filter: opacity(.6) sepia(.7);
+            transition: filter .17s;
+        }
+
+        &:hover {
+            box-shadow: 0 1px 8px #000000;
+            border-color: #3080ff;
+            cursor: pointer;
+            color: #f3f3f3;
+
+            .stats {
+                opacity: 1;
+            }
+        }
+
+        &.current img,
+        &:hover img {
+            filter: opacity(1) sepia(0);
+        }
+
+        &.current {
+            border-color: #30ff80;
+        }
+
+        .stats {
+            opacity: .7;
+            .cases {
+                color: #16f9d9;
+            }
+            .critical {
+                color: #f7b311;
+            }
+            .deaths {
+                color: #ff1a0f;
+            }
+        }
+    }
+}
