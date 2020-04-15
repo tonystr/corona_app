@@ -42,13 +42,10 @@ function App() {
 
     // Countries to compare
     useEffect(() => {
-        const call = async () => {
-            const data = await Promise.all(compareNames.map(name => fetch(`https://corona.lmao.ninja/countries/${name}`).then(d => d.json())));
-            setAboutCounts(() => data.reduce((acc, con) => { acc[con.country] = con; return acc; }, {}));
-        }
-
         try {
-            call();
+            Promise.all(compareNames.map(name => fetch(`https://corona.lmao.ninja/countries/${name}`)
+                .then(d => d.json())))
+                .then(data => setAboutCounts(() => data.reduce((acc, con) => { acc[con.country] = con; return acc; }, {})));
         } catch(err) {
             console.error(err);
         }
